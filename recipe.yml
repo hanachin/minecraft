@@ -1,0 +1,28 @@
+resources:
+  - type: user
+    name: mc
+  - type: directory
+    path: /home/mc/minecraft_server
+    owner: mc
+    group: mc
+  - type: file
+    path: /home/mc/minecraft_server/eula.txt
+    content: eula=true
+    owner: mc
+    group: mc
+  - type: remote_file
+    destination: /home/mc/minecraft_server/minecraft_server.jar
+    source: minecraft_server.jar
+    owner: mc
+    group: mc
+  - type: remote_file
+    destination: /etc/init.d/minecraft
+    source: minecraft
+    mode: 0755
+    owner: root
+    group: root
+  - type: command
+    check_script: chkconfig | grep minecraft
+    script: chkconfig --add minecraft
+  - type: service
+    name: minecraft
