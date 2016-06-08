@@ -3,7 +3,7 @@
 set -ex
 
 if [ ! -f minecraft_server.jar ]; then
-  curl -LSfs https://s3.amazonaws.com/Minecraft.Download/versions/1.9.4/minecraft_server.1.9.4.jar -o minecraft_server.jar
+  curl -LSfs -o minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.10/minecraft_server.1.10.jar
 fi
 
 bundle check --path=.bundle || bundle install --path=.bundle
