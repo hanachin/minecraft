@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -ex
+
+curl -H "x-api-key: $X_API_KEY" -X DELETE $ENDPOINT_URL

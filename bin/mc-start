@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -ex
+
+curl -H "x-api-key: $X_API_KEY" -X POST $ENDPOINT_URL
+
+open -a Minecraft

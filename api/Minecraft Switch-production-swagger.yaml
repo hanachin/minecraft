@@ -1,0 +1,39 @@
+---
+swagger: "2.0"
+info:
+  version: "2016-06-08T17:51:34Z"
+  title: "Minecraft Switch"
+host: "your-api-host.execute-api.ap-northeast-1.amazonaws.com"
+basePath: "/production"
+schemes:
+- "https"
+paths:
+  /minecraft-server:
+    post:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+    delete:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  Empty:
+    type: "object"
