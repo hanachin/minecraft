@@ -2,6 +2,9 @@
 
 source /home/mc/.envrc
 
-if [ -n "$(service minecraft command "list" | grep 'There are 0')" ]; then
+date >> /tmp/goodbye
+
+if [ -n "$(/sbin/service minecraft command 'list' | grep 'There are 0')" ]; then
+  echo 'shut down server'
   curl -H "x-api-key: $X_API_KEY" -X DELETE $ENDPOINT_URL
 fi
