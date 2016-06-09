@@ -7,4 +7,4 @@ if [ ! -f minecraft_server.jar ]; then
 fi
 
 bundle check --path=.bundle || bundle install --path=.bundle
-bundle exec serverkit apply --hosts minecraft recipe.yml
+bundle exec serverkit apply --log-level DEBUG --hosts minecraft recipe.yml

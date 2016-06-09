@@ -26,3 +26,20 @@ resources:
     script: chkconfig --add minecraft
   - type: service
     name: minecraft
+  - type: remote_file
+    destination: /home/mc/.envrc
+    source: .envrc
+    owner: mc
+    group: mc
+  - type: remote_file
+    destination: /home/mc/goodbye.sh
+    source: goodbye.sh
+    owner: mc
+    group: mc
+  - type: remote_file
+    destination: /home/mc/crontab
+    source: crontab
+    owner: mc
+    group: mc
+  - type: command
+    script: crontab -u mc /home/mc/crontab
