@@ -5,6 +5,7 @@ source /home/mc/.envrc
 date >> /tmp/goodbye
 
 if [ -n "$(/sbin/service minecraft command 'list' | grep 'There are 0')" ]; then
+  echo 'wait 180 seconds...'
   sleep 180
   if [ -n "$(/sbin/service minecraft command 'list' | grep 'There are 0')" ]; then
     echo 'shut down server'
