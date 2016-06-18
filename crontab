@@ -1,1 +1,2 @@
+@reboot ./hello.sh
 */10 * * * * ./goodbye.sh
