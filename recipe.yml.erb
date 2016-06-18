@@ -21,6 +21,11 @@ resources:
     mode: 0755
     owner: root
     group: root
+  - type: remote_file
+    destination: /home/mc/minecraft_server/server.properties
+    source: server.properties
+    owner: mc
+    group: mc
   - type: command
     check_script: chkconfig | grep minecraft
     script: chkconfig --add minecraft
@@ -43,3 +48,9 @@ resources:
     group: mc
   - type: command
     script: crontab -u mc /home/mc/crontab
+  - type: command
+    script: /sbin/service minecraft command 'whitelist on'
+  <%- players.each do |player| %>
+  - type: command
+    script: /sbin/service minecraft command 'whitelist add <%= player %>'
+  <%- end -%>
