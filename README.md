@@ -1,9 +1,8 @@
 Minecraft 🌏
 ============
 
-TODO
-----
-
-- [x] Create Minecraft server and Minecraft Server switch API
-- [x] Start Minecraft server at player boot Minecraft client.
-- [ ] Stop Minecraft server if player no longer exists.
+- [x] API経由でマイクラサーバーの電源オン/オフ
+- [x] マイクラを起動したタイミングでサーバーを起動
+- [x] 誰もいないと勝手に止まる
+- [x] Twitterのメンションでサーバーを起動
+- [x] Twitterで起動/終了をつぶやく
