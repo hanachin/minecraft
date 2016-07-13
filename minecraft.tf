@@ -9,3 +9,12 @@ resource "aws_vpc" "minecraft" {
     Name = "minecraft"
   }
 }
+
+resource "aws_subnet" "minecraft" {
+  vpc_id = "${aws_vpc.minecraft.id}"
+  cidr_block = "172.30.1.0/24"
+
+  tags {
+    Name = "minecraft"
+  }
+}
