@@ -18,3 +18,12 @@ resource "aws_subnet" "minecraft" {
     Name = "minecraft"
   }
 }
+
+resource "aws_ebs_volume" "minecraft" {
+  size = 8
+  availability_zone = "ap-northeast-1b"
+
+  tags {
+    Name = "minecraft"
+  }
+}
