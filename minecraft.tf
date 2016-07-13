@@ -28,3 +28,16 @@ resource "aws_ebs_volume" "minecraft" {
     Name = "minecraft"
   }
 }
+
+resource "aws_security_group" "minecraft" {
+  name = "minecraft server"
+  description = "tcp port for minecraft server"
+  vpc_id = "${aws_vpc.minecraft.id}"
+
+  ingress {
+    from_port = 25565
+    to_port = 25565
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
