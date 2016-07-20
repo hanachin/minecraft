@@ -1,3 +1,6 @@
+variable "my_home_ip" {}
+variable "minecraft_snapshot_id" {}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -50,13 +53,12 @@ resource "aws_ebs_volume" "minecraft" {
   size = 8
   availability_zone = "ap-northeast-1b"
   type = "gp2"
+  snapshot_id = "${var.minecraft_snapshot_id}"
 
   tags {
     Name = "minecraft"
   }
 }
-
-variable "my_home_ip" {}
 
 resource "aws_security_group" "ssh_from_home" {
   name = "ssh from home"
