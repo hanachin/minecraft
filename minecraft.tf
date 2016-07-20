@@ -1,5 +1,6 @@
 variable "my_home_ip" {}
 variable "minecraft_snapshot_id" {}
+variable "minecraft_admin_public_key" {}
 
 provider "aws" {
   region = "ap-northeast-1"
@@ -98,4 +99,9 @@ resource "aws_security_group" "minecraft" {
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_key_pair" "minecraft" {
+  key_name = "minecraft-admin"
+  public_key = "${var.minecraft_admin_public_key}"
 }

@@ -36,7 +36,7 @@ $ envchain aws-hanachin-minecraft-admin terraform remote config -backend=S3 -bac
 Configure variables.
 
 ```
-$ envchain --set aws-hanachin-minecraft-admin TF_VAR_my_home_ip TF_VAR_minecraft_snapshot_id
+$ envchain --set aws-hanachin-minecraft-admin TF_VAR_my_home_ip TF_VAR_minecraft_snapshot_id TF_VAR_minecraft_admin_public_key
 ```
 
 Finally, apply terraform to your environment.
