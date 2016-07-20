@@ -32,6 +32,20 @@ resource "aws_subnet" "minecraft" {
   }
 }
 
+resource "aws_internet_gateway" "minecraft" {
+  vpc_id = "${aws_vpc.minecraft.id}"
+
+  tags {
+      Name = "minecraft"
+  }
+}
+
+resource "aws_route" "minecraft" {
+  route_table_id = "${aws_vpc.minecraft.main_route_table_id}"
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = "${aws_internet_gateway.minecraft.id}"
+}
+
 resource "aws_ebs_volume" "minecraft" {
   size = 8
   availability_zone = "ap-northeast-1b"
