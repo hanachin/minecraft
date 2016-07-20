@@ -105,3 +105,7 @@ resource "aws_key_pair" "minecraft" {
   key_name = "minecraft-admin"
   public_key = "${var.minecraft_admin_public_key}"
 }
+
+resource "aws_eip" "minecraft" {
+  vpc = true
+}
