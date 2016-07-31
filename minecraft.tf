@@ -30,6 +30,7 @@ resource "aws_vpc" "minecraft" {
 }
 
 resource "aws_subnet" "minecraft" {
+  availability_zone = "ap-northeast-1c"
   vpc_id = "${aws_vpc.minecraft.id}"
   cidr_block = "172.30.1.0/24"
 
@@ -54,7 +55,7 @@ resource "aws_route" "minecraft" {
 
 resource "aws_ebs_volume" "minecraft" {
   size = 8
-  availability_zone = "ap-northeast-1b"
+  availability_zone = "ap-northeast-1c"
   type = "gp2"
   snapshot_id = "${var.minecraft_snapshot_id}"
 
@@ -114,6 +115,7 @@ resource "aws_eip" "minecraft" {
 
 resource "aws_instance" "minecraft" {
   ami = "ami-29160d47"
+  availability_zone = "ap-northeast-1c"
   instance_type = "t2.small"
   subnet_id = "${aws_subnet.minecraft.id}"
   security_groups = [
