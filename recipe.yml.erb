@@ -2,16 +2,16 @@ resources:
   - type: user
     name: mc
   - type: directory
-    path: /home/mc/minecraft_server
+    path: /opt/minecraft
     owner: mc
     group: mc
   - type: file
-    path: /home/mc/minecraft_server/eula.txt
+    path: /opt/minecraft/eula.txt
     content: eula=true
     owner: mc
     group: mc
   - type: remote_file
-    destination: /home/mc/minecraft_server/minecraft_server.jar
+    destination: /opt/minecraft/minecraft_server.jar
     source: minecraft_server.jar
     owner: mc
     group: mc
@@ -22,7 +22,7 @@ resources:
     owner: root
     group: root
   - type: remote_file
-    destination: /home/mc/minecraft_server/server.properties
+    destination: /opt/minecraft/server.properties
     source: server.properties
     owner: mc
     group: mc

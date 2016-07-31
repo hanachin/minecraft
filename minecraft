@@ -19,7 +19,7 @@ SERVICE='minecraft_server.jar'
 OPTIONS='nogui'
 USERNAME='mc'
 WORLD='world'
-MCPATH='/home/mc/minecraft_server'
+MCPATH='/opt/minecraft'
 
 # TODO
 BACKUPPATH='/media/remote.share/minecraft.backup'
