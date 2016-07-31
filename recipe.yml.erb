@@ -5,6 +5,12 @@ resources:
     path: /opt/minecraft
     owner: mc
     group: mc
+  - type: line
+    path: /etc/fstab
+    pattern: '/opt/minecraft'
+    line: "/dev/xvdf /opt/minecraft ext4 defaults,nofail 0 2"
+  - type: command
+    script: mount -a
   - type: file
     path: /opt/minecraft/eula.txt
     content: eula=true
