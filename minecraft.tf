@@ -6,6 +6,7 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
+/*
 // to save .tfstate file
 resource "aws_s3_bucket" "minecraft_admin" {
   bucket = "hanachin-minecraft-admin"
@@ -18,6 +19,7 @@ resource "aws_s3_bucket" "minecraft_admin" {
     Name = "minecraft"
   }
 }
+*/
 
 resource "aws_vpc" "minecraft" {
   cidr_block = "172.30.0.0/16"
