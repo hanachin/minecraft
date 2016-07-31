@@ -120,6 +120,10 @@ resource "aws_instance" "minecraft" {
   ]
   key_name = "${aws_key_pair.minecraft.key_name}"
 
+  provisioner "local-exec" {
+    command = "./provisioning.sh ${aws_eip.minecraft.public_ip}"
+  }
+
   tags {
     Name = "minecraft"
   }
