@@ -131,7 +131,7 @@ resource "aws_eip_association" "minecraft" {
 }
 
 resource "aws_volume_attachment" "minecraft" {
-  device_name = "/dev/sdf"
+  device_name = "/dev/xvdf"
   volume_id = "${aws_ebs_volume.minecraft.id}"
   instance_id = "${aws_instance.minecraft.id}"
 }
