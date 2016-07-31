@@ -39,3 +39,33 @@ Finally, apply terraform to your environment.
 ```
 $ envchain aws-hanachin-minecraft-admin terraform apply
 ```
+
+DNS
+---------
+
+Run `envchain aws-hanachin-minecraft-admin terraform show` to confirm ElasticIP
+
+Open Routes 53 console and create A record 'minecraft.hanach.in' to the ElasticIP.
+
+provisioning
+------------
+
+Add the following to `~/.ssh/config`.
+
+```
+Host minecraft
+  User ec2-user
+  HostName minecraft.hanach.in
+  IdentityFile YOUR_PRIVATE_KEY_PATH
+```
+
+Set variables.
+
+```
+$ cp .envrc.sample .envrc
+$ vi .envrc
+$ cp variables.yml.sample variables.yml
+$ vi variables.yml
+```
+
+Then run `$ ./provisioning.sh`.
