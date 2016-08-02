@@ -139,3 +139,25 @@ resource "aws_volume_attachment" "minecraft" {
   volume_id = "${aws_ebs_volume.minecraft.id}"
   instance_id = "${aws_instance.minecraft.id}"
 }
+
+/*
+TODO
+resource "aws_iam_role" "mc_line_bot" {
+  name ="mc_line_bot"
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}*/
