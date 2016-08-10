@@ -27,10 +27,11 @@ module Ruboty
           http.request(req)
         end
 
-        Ruboty.logger.info(code: res.code, body: res.body)
+        res.value
 
-        message.reply(res.body)
+        Ruboty.logger.info(code: res.code, body: res.body)
       rescue => e
+        message.reply('start minecraft server failed')
         Ruboty.logger.error(e.message)
         Ruboty.logger.error(e.backtrace.join("\n"))
       end
