@@ -1,3 +1,8 @@
+PATH
+  remote: ./ruboty-minecraft_switch
+  specs:
+    ruboty-minecraft_switch (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,6 +73,7 @@ PLATFORMS
 
 DEPENDENCIES
   ruboty
+  ruboty-minecraft_switch!
   ruboty-twitter
 
 BUNDLED WITH
