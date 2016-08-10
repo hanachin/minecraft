@@ -3,3 +3,8 @@ source 'https://rubygems.org/'
 gem 'ruboty'
 gem 'ruboty-twitter'
 gem 'ruboty-minecraft_switch', path: './ruboty-minecraft_switch'
+
+group :development do
+  gem 'pry'
+  gem 'pry-byebug'
+end
