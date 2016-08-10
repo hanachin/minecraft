@@ -77,5 +77,6 @@ Twitter bot
 Create your apps at https://apps.twitter.com/
 
 ```
-$ envchain --set twitter-hanachin_mc-mc_bot TWITTER_ACCESS_TOKEN TWITTER_ACCESS_TOKEN_SECRET TWITTER_CONSUMER_KEY TWITTER_CONSUMER_SECRET RUBOTY_NAME
+$ envchain --set twitter-hanachin_mc-mc_bot TWITTER_ACCESS_TOKEN TWITTER_ACCESS_TOKEN_SECRET TWITTER_CONSUMER_KEY TWITTER_CONSUMER_SECRET RUBOTY_NAME X_API_KEY ENDPOINT_URL
+$ envchain twitter-hanachin_mc-mc_bot bundle exec ruboty
 ```
