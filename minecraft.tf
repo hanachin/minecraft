@@ -1,6 +1,7 @@
 variable "my_home_ip" {}
 variable "minecraft_snapshot_id" {}
 variable "minecraft_admin_public_key" {}
+variable "minecraft_admin_private_key_path" {}
 
 provider "aws" {
   region = "ap-northeast-1"
@@ -123,6 +124,35 @@ resource "aws_instance" "minecraft" {
 
   tags {
     Name = "minecraft"
+  }
+}
+
+resource "aws_instance" "mc_bot" {
+  ami = "ami-29160d47"
+  availability_zone = "ap-northeast-1c"
+  instance_type = "t2.nano"
+  subnet_id = "${aws_subnet.minecraft.id}"
+  vpc_security_group_ids = [
+    "${aws_security_group.ssh_from_home.id}",
+    "${aws_security_group.minecraft.id}"
+  ]
+  key_name = "${aws_key_pair.minecraft.key_name}"
+  associate_public_ip_address = true
+
+  tags {
+    Name = "mc_bot"
+  }
+
+  provisioner "remote-exec" {
+    inline  = [
+      "sudo yum update -y"
+    ]
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      host = "${aws_instance.mc_bot.public_ip}"
+      private_key = "${file(var.minecraft_admin_private_key_path)}"
+    }
   }
 }
 
