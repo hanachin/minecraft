@@ -108,7 +108,7 @@ resource "aws_instance" "minecraft" {
   availability_zone = "ap-northeast-1c"
   instance_type = "t2.small"
   subnet_id = "${aws_subnet.minecraft.id}"
-  security_groups = [
+  vpc_security_group_ids = [
     "${aws_security_group.ssh_from_home.id}",
     "${aws_security_group.minecraft.id}"
   ]
