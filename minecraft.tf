@@ -110,6 +110,7 @@ resource "aws_key_pair" "minecraft" {
 }
 
 resource "aws_eip" "minecraft" {
+  instance = "${aws_instance.minecraft.id}"
   vpc = true
 }
 
@@ -127,11 +128,6 @@ resource "aws_instance" "minecraft" {
   tags {
     Name = "minecraft"
   }
-}
-
-resource "aws_eip_association" "minecraft" {
-  instance_id = "${aws_instance.minecraft.id}"
-  allocation_id = "${aws_eip.minecraft.id}"
 }
 
 resource "aws_volume_attachment" "minecraft" {
