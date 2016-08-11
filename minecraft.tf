@@ -53,17 +53,6 @@ resource "aws_route" "minecraft" {
   gateway_id = "${aws_internet_gateway.minecraft.id}"
 }
 
-resource "aws_ebs_volume" "minecraft" {
-  size = 8
-  availability_zone = "ap-northeast-1c"
-  type = "gp2"
-  snapshot_id = "${var.minecraft_snapshot_id}"
-
-  tags {
-    Name = "minecraft"
-  }
-}
-
 resource "aws_security_group" "ssh_from_home" {
   name = "ssh from home"
   description = "ssh from my home ip"
@@ -125,15 +114,16 @@ resource "aws_instance" "minecraft" {
   ]
   key_name = "${aws_key_pair.minecraft.key_name}"
 
+  ebs_block_device {
+    device_name = "/dev/xvdf"
+    snapshot_id = "${var.minecraft_snapshot_id}"
+    volume_type = "gp2"
+    volume_size = 8
+  }
+
   tags {
     Name = "minecraft"
   }
-}
-
-resource "aws_volume_attachment" "minecraft" {
-  device_name = "/dev/xvdf"
-  volume_id = "${aws_ebs_volume.minecraft.id}"
-  instance_id = "${aws_instance.minecraft.id}"
 }
 
 /*
