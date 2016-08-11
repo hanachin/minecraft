@@ -3,3 +3,4 @@ minecraft_server.jar
 minecraft_server_versions
 variables.yml
 .terraform
+mc_twitter_bot/vendor/bundle
