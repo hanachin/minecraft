@@ -44,14 +44,3 @@ $ curl -X POST $ENDPOINT_URL/ifttt -d "{\"token\":\"$my_token\"}"
 $ curl -X POST $ENDPOINT_URL/ifttt -d "{\"token\":\"$my_token\",\"user_name\":\"先ほど設定したTWITTER_USER_NAMESの1つ\"}"
 "start minecraft server instance: done"
 ```
-
-### IFTTTのレシピ
-
-if new mention of you, then make a web request.
-
-
-URL          | APIゲートウェイのURL
------------- | ---
-Method       | POST
-Content Type | application/json
-Body         | {"user_name":"<<<{{UserName}}>>>","text":"<<<{{Text}} >>>","link_to_tweet":"<<<{{LinkToTweet}}>>>","token":"ここにTOKENに設定した秘密の合言葉"}
