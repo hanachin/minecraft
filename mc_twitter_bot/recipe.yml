@@ -1,0 +1,46 @@
+resources:
+  - type: package
+    name: ruby23
+  - type: package
+    name: ruby23-devel
+  - type: package
+    name: gcc
+  - type: package
+    name: gcc-c++
+  - type: command
+    check_script: ruby -v | grep 2.3
+    script: alternatives --set ruby /usr/bin/ruby2.3
+  - type: command
+    check_script: gem list bundler | grep bundler
+    script: gem install bundler
+  - type: package
+    name: git
+  - type: user
+    name: mc
+  - type: git
+    user: mc
+    path: /home/mc/minecraft
+    repository: https://github.com/hanachin/minecraft.git
+    state: updated
+  - type: command
+    user: mc
+    cwd: /home/mc/minecraft/mc_twitter_bot
+    check_script: /usr/local/bin/bundle check --path=vendor/bundle
+    script: /usr/local/bin/bundle install --path=vendor/bundle
+  - type: remote_file
+    destination: /etc/init.d/mc_twitter_bot
+    source: mc_twitter_bot/mc_twitter_bot.init.sh
+    owner: root
+    group: root
+    mode: 0755
+  - type: template
+    destination: /home/mc/mc_twitter_bot
+    source: mc_twitter_bot/mc_twitter_bot.erb
+    owner: mc
+    group: mc
+    mode: 0744
+  - type: command
+    check_script: chkconfig | grep mc_twitter_bot
+    script: chkconfig --add mc_twitter_bot
+  - type: service
+    name: mc_twitter_bot

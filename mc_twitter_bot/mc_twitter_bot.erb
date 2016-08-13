@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -ex
+
+cd /home/mc/minecraft/mc_twitter_bot
+
+prog="mc_twitter_bot"
+mc_twitter_bot_path="/home/mc/minecraft/mc_twitter_bot"
+pidfile="/home/mc/$prog.pid"
+
+export BUNDLE_GEMFILE=$mc_twitter_bot_path/Gemfile
+export BUNDLE_PATH=$mc_twitter_bot_path/vendor/bundle
+
+export TWITTER_ACCESS_TOKEN=<%= ENV.fetch('TWITTER_ACCESS_TOKEN') %>
+export TWITTER_ACCESS_TOKEN_SECRET=<%= ENV.fetch('TWITTER_ACCESS_TOKEN_SECRET') %>
+export TWITTER_CONSUMER_KEY=<%= ENV.fetch('TWITTER_CONSUMER_KEY') %>
+export TWITTER_CONSUMER_SECRET=<%= ENV.fetch('TWITTER_CONSUMER_SECRET') %>
+export RUBOTY_NAME=<%= ENV.fetch('RUBOTY_NAME') %>
+export X_API_KEY=<%= ENV.fetch('X_API_KEY') %>
+export ENDPOINT_URL=<%= ENV.fetch('ENDPOINT_URL') %>
+
+nohup /usr/local/bin/bundle exec ruboty &
+
+echo $! > $pidfile
