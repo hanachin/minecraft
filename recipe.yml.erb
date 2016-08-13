@@ -18,18 +18,18 @@ resources:
     group: mc
   - type: remote_file
     destination: /opt/minecraft/minecraft_server.jar
-    source: minecraft_server.jar
+    source: files/minecraft_server.jar
     owner: mc
     group: mc
   - type: remote_file
     destination: /etc/init.d/minecraft
-    source: minecraft
+    source: files/minecraft
     mode: 0755
     owner: root
     group: root
   - type: remote_file
     destination: /opt/minecraft/server.properties
-    source: server.properties
+    source: files/server.properties
     owner: mc
     group: mc
   - type: command
@@ -44,17 +44,17 @@ resources:
     group: mc
   - type: remote_file
     destination: /home/mc/goodbye.sh
-    source: goodbye.sh
+    source: files/goodbye.sh
     owner: mc
     group: mc
   - type: remote_file
     destination: /home/mc/hello.sh
-    source: hello.sh
+    source: files/hello.sh
     owner: mc
     group: mc
   - type: remote_file
     destination: /home/mc/crontab
-    source: crontab
+    source: files/crontab
     owner: mc
     group: mc
   - type: command
