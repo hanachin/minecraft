@@ -1,15 +1,13 @@
 'use strict';
 
-const INSTANCE_ID = $instanceID;
-
 var AWS = require('aws-sdk');
 AWS.config.region = 'ap-northeast-1';
 
-function ec2Stop(cb){
+function ec2Stop(instanceId, cb){
     var ec2 = new AWS.EC2();
     var params = {
         InstanceIds: [
-            INSTANCE_ID
+            instanceId
         ]
     };
 
@@ -25,9 +23,36 @@ function ec2Stop(cb){
     });
 }
 
+function findMinecraftInstance(cb) {
+  var ec2 = new AWS.EC2();
+  var params = {
+      Filters: [
+          {
+              Name: 'tag:Name',
+              Values: ['minecraft']
+          }
+    ]
+  }
+
+  ec2.describeInstances(params, function(err, data) {
+      if (!!err) {
+          console.log('describe minecraft server instance: error');
+          console.log(err, err.stack);
+      } else {
+          console.log('describe minecraft server instance: success');
+          console.log(data);
+          if (data.Reservations[0] && data.Reservations[0].Instances[0]) {
+            cb(data.Reservations[0].Instances[0].InstanceId);
+          }
+      }
+  });
+}
+
 exports.handler = function(event, context) {
     console.log('stop minecraft server instance: start');
-    ec2Stop(function() {
-        context.done(null, 'stop minecraft server instance: done');
-    });
+    findMinecraftInstance(function (instanceId) {
+        ec2Stop(instanceId, function() {
+            context.done(null, 'stop minecraft server instance: done');
+        });
+    })
 };
