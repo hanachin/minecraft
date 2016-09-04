@@ -44,3 +44,15 @@ resources:
     script: chkconfig --add mc_twitter_bot
   - type: service
     name: mc_twitter_bot
+  - type: remote_file
+    destination: /home/mc/wakeup.sh
+    source: files/mc_twitter_bot/wakeup.sh
+    owner: mc
+    group: mc
+  - type: remote_file
+    destination: /home/mc/crontab
+    source: files/mc_twitter_bot/crontab
+    owner: mc
+    group: mc
+  - type: command
+    script: crontab -u mc /home/mc/crontab
