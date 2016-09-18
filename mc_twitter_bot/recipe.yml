@@ -45,14 +45,14 @@ resources:
   - type: service
     name: mc_twitter_bot
   - type: remote_file
-    destination: /home/mc/wakeup.sh
+    destination: /home/ec2-user/wakeup.sh
     source: files/mc_twitter_bot/wakeup.sh
-    owner: mc
-    group: mc
+    owner: ec2-user
+    group: ec2-user
   - type: remote_file
-    destination: /home/mc/crontab
+    destination: /home/ec2-user/crontab
     source: files/mc_twitter_bot/crontab
-    owner: mc
-    group: mc
+    owner: ec2-user
+    group: ec2-user
   - type: command
-    script: crontab -u mc /home/mc/crontab
+    script: crontab -u ec2-user /home/ec2-user/crontab
