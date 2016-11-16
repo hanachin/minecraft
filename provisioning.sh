@@ -3,7 +3,7 @@
 set -ex
 
 if [ ! -f files/minecraft_server.jar ]; then
-  curl -LSfs -o files/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.10/minecraft_server.1.10.jar
+  curl -LSfs -o files/minecraft_server.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.10.2/minecraft_server.1.10.2.jar
 fi
 
 if [ -z $1 ]; then
