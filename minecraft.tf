@@ -107,7 +107,7 @@ resource "aws_eip" "minecraft" {
 resource "aws_instance" "minecraft" {
   ami = "ami-29160d47"
   availability_zone = "ap-northeast-1c"
-  instance_type = "t2.small"
+  instance_type = "t2.large"
   subnet_id = "${aws_subnet.minecraft.id}"
   vpc_security_group_ids = [
     "${aws_security_group.ssh_from_home.id}",
