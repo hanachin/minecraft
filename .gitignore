@@ -1,5 +1,6 @@
 .bundle
-minecraft_server.jar
+files/minecraft_server.jar
+files/minecraft_server.*.jar
 minecraft_server_versions
 variables.yml
 .terraform

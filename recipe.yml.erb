@@ -17,10 +17,12 @@ resources:
     owner: mc
     group: mc
   - type: remote_file
-    destination: /opt/minecraft/minecraft_server.jar
-    source: files/minecraft_server.jar
+    destination: /opt/minecraft/minecraft_server.1.11.2.jar
+    source: files/minecraft_server.1.11.2.jar
     owner: mc
     group: mc
+  - type: command
+    script: cp /opt/minecraft/minecraft_server.1.11.2.jar /opt/minecraft/minecraft_server.jar
   - type: remote_file
     destination: /etc/init.d/minecraft
     source: files/minecraft
